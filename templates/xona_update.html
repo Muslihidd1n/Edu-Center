@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <form method="post">{% csrf_token%}
+        <label>Nom</label>
+        <input type="text" name="nomi" value="{{xona.nom}}"><br><br>
+        <label>Raqam</label>
+        <input type="number" name="raqami" value="{{xona.raqam}}"><br><br>
+        <button>Taxrirlash</button>
+    </form>
+</body>
+</html>

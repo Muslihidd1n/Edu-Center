@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <br>
+        <form method="get">
+            <input name="nomi" type="text" placeholder="Ustoz ismini yozish">
+            <button>Qidirish</button>
+        </form>
+        <br>
+        <br>
+        <h1>Xamma ustozlar:</h1>
+        <br>
+        {%for u in ustoz%}
+        <h2>{{u.id}}.{{u.ism}}</h2>
+        <a href="/ustoz_ochir/{{u.id}}"> <button>O'chirish</button></a>
+        <a href="/ustoz_update/{{u.id}}"> <button>Taxrirlash</button></a>
+        <a href="/bitta_ustoz/{{u.id}}"> <button>Malumot</button></a>
+        {% endfor %}
+        <br>
+        <br>
+        <br>
+        <form  method="post">{% csrf_token %}
+            <label>Ism</label>
+            <input type="text" name="ismi">
+            <label>Raqami</label>
+            <input type="text" name="tel_raqami">
+            <label>Manzil</label>
+            <input type="text" name="manzili">
+            <label>Yonalish</label>
+            <select name="yonalish">
+                {% for y in yonalish%}
+                <option value="{{y.id}}">{{y.nom}}</option>
+                {% endfor %}
+            </select>
+            <button>Ustoz qoshish</button>
+        </form>
+        <hr>
+        <a href="/"> <button>Bosh sahifaga otish</button></a>
+</body>
+</html>

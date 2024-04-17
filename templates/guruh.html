@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <br>
+        <form method="get">
+            <input name="nomi" type="text" placeholder="Guruh nomini yozish">
+            <button>Qidirish</button>
+        </form>
+        <br>
+        <br>
+        <h1>Xamma guruhlar:</h1>
+        <br>
+        {%for g in guruh%}
+        <h2>{{g.id}}.{{g.nom}}</h2>
+        <a href="/guruh_ochir/{{g.id}}"> <button>O'chirish</button></a>
+        <a href="/guruh_update/{{g.id}}"> <button>Taxrirlash</button></a>
+        {% endfor %}
+        <br>
+        <br>
+        <form  method="post" action="/guruh/">{% csrf_token %}
+            <label>Nom</label>
+            <input type="text" name="nomi">
+            <label>Vaqt</label>
+            <input type="text" name="vaqti">
+            <label>Xona</label>
+            <select name="xona">
+                {% for x in xona%}
+                <option value="{{x.id}}">{{x.nom}}</option>
+                {% endfor %}
+            </select>
+            <label>Yonalish</label>
+            <select name="yonalish">
+                {% for y in yonalish%}
+                <option value="{{y.id}}">{{y.nom}}</option>
+                {% endfor %}
+            </select>
+            <label>Ustoz</label>
+            <select name="ustoz">
+                {% for u in ustoz%}
+                <option value="{{u.id}}">{{u.ism}}</option>
+                {% endfor %}
+            </select>
+        <button type="submit">Guruh qoshish</button>
+        </form>
+        <hr>
+        <a href="/"> <button>Bosh sahifaga otish</button></a>
+</body>
+</html>

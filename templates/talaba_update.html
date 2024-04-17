@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post">{% csrf_token%}
+        <label>Ism</label>
+        <input type="text" name="ismi" value="{{talaba.ism}}"><br><br>
+        <label>Raqam</label>
+        <input type="number" name="tel_raqami" value="{{talaba.tel_raqam}}"><br><br>
+        <label>Manzil</label>
+        <input type="text" name="manzili" value="{{talaba.manzil}}"><br><br>
+        <select name="yonalish">
+            {% for y in yonalish%}
+            <option value="{{y.id}}">{{y.nom}}</option>
+            {% endfor %}
+        </select>
+        <select name="guruh">
+            {% for g in guruh%}
+            <option value="{{g.id}}">{{g.nom}}</option>
+            {% endfor %}
+        </select>
+        <button>Taxrirlash</button>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <br>
+        <form method="get">
+            <input name="nomi" type="text" placeholder="Yonalish nomini yozish">
+            <button>Qidirish</button>
+        </form>
+        <br>
+        <br>
+        <h1>Xamma yonalishlar:</h1>
+        <br>
+        {%for y in yonalish%}
+        <h2>{{y.id}}.{{y.nom}}</h2>
+        <a href="/yonalish_ochir/{{y.id}}"> <button>O'chirish</button></a>
+        <a href="/yonalish_update/{{y.id}}"> <button>Taxrirlash</button></a>
+        {% endfor %}
+        <br>
+        <br>
+        <br>
+        <form  method="post">{% csrf_token %}
+            <label>Nom</label>
+            <input type="text" name="nomi">
+            <label>Narx</label>
+            <input type="number" name="narxi">
+            <button>Yonalish qoshish</button>
+        </form>
+        <hr>
+        <a href="/"> <button>Bosh sahifaga otish</button></a>
+</body>
+</html>

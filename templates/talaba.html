@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <br>
+        <form method="get">
+            <input name="ismi" type="text" placeholder="Talaba ismini yozish">
+            <button>Qidirish</button>
+        </form>
+        <br>
+        <br>
+        <h1>Xamma talabalar:</h1>
+        <br>
+        {%for t in talaba%}
+        <h2>{{t.id}}.{{t.ism}}</h2>
+        <a href="/talaba_ochir/{{t.id}}"> <button>O'chirish</button></a>
+        <a href="/talaba_update/{{t.id}}"> <button>Taxrirlash</button></a>
+        <a href="/bitta_talaba/{{t.id}}"> <button>Malumot</button></a>
+        {% endfor %}
+        <br>
+        <br>
+        <br>
+        <form  method="post">{% csrf_token %}
+            <label>Ism</label>
+            <input type="text" name="ismi">
+            <label>Raqami</label>
+            <input type="text" name="tel_raqami">
+            <label>Manzil</label>
+            <input type="text" name="manzili">
+            <label>Guruh</label>
+            <select name="guruh">
+                {% for g in guruh%}
+                <option value="{{g.id}}">{{g.nom}}</option>
+                {% endfor %}
+            </select>
+            <label>Yonalish</label>
+            <select name="yonalish">
+                {% for y in yonalish%}
+                <option value="{{y.id}}">{{y.nom}}</option>
+                {% endfor %}
+            </select>
+            <button>Talaba qoshish</button>
+        </form>
+        <hr>
+        <a href="/"> <button>Bosh sahifaga otish</button></a>
+</body>
+</html>

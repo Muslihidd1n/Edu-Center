@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <br>
+        <form method="get">
+            <input name="nomi" type="text" placeholder="Xona nomini yozish">
+            <button>Qidirish</button>
+        </form>
+        <br>
+        <br>
+        <h1>Xamma xonalar:</h1>
+        <br>
+        {%for x in xona%}
+        <h2>{{x.id}}.{{x.nom}}</h2>
+        <a href="/xona_ochir/{{x.id}}"> <button>O'chirish</button></a>
+        <a href="/xona_update/{{x.id}}"> <button>Taxrirlash</button></a>
+        {% endfor %}
+        <br>
+        <br>
+        <br>
+        <form  method="post">{% csrf_token %}
+            <label>Nom</label>
+            <input type="text" name="nomi">
+            <label>Raqam</label>
+            <input type="number" name="raqami">
+            <button>Xona qoshish</button>
+        </form>
+        <hr>
+        <a href="/"> <button>Bosh sahifaga otish</button></a>
+</body>
+</html>

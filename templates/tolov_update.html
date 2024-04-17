@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post">{% csrf_token%}
+        <label>Summa</label>
+        <input type="number" name="summa"><br><br>
+        <label>Chegirma</label>
+        <input type="number" name="chegirma" value="{{guruh.chegirma}}"><br><br>
+        <label>Qarz</label>
+        <input type="text" name="qarz" value="{{guruh.qarz}}"><br><br>
+        <label>Talaba</label>
+        <select name="talaba">
+            {% for t in talaba%}
+            <option value="{{t.id}}">{{t.ism}}</option>
+            {% endfor %}
+        </select>
+        <label>Guruh</label>
+        <select name="guruh">
+            {% for g in guruh%}
+            <option value="{{g.id}}">{{g.nom}}</option>
+            {% endfor %}
+        </select>
+        <button>Taxrirlash</button>
+</body>
+</html>
